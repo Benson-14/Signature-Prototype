@@ -31,6 +31,12 @@
               </a>
             </div>
           <p class="mt-4">{{ selectedRadioButtonText || customSignoffText }}</p>
+          <!-- Video Conference -->
+          <div class="mt-4" v-if="buttonText[selectedPlatform]">
+            <a :href="buttonLink" target="_blank">
+              <button :style="{ fontFamily: buttonFont, backgroundColor: 'lightblue' }" class="px-2">{{ buttonText[selectedPlatform] }}</button>
+            </a>
+          </div>
         </div>
               <!-- Marketplace Icon -->
       <div class="mt-4" v-if="isMarketplaceIconVisible">
@@ -145,14 +151,38 @@
 
     </div>
 
-    <!-- Video Conference Section -->
-    <div class="relative mb-4 lg:mx-4 mx-2">
-      <button class="w-full text-left hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 hover:text-white px-4 py-2 rounded-lg" @click="toggleSection('calendar')">Video Conference</button>
-      <div v-if="showCalendar" class="mt-2">
-        <!-- Customization fields for Calendar -->
-        <input type="text" v-model="calendarCustomization" placeholder="Calendar Customization">
+      <!-- Video Conference Section -->
+      <div class="relative mb-4 lg:mx-4 mx-2">
+        <button class="w-full text-left hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 hover:text-white px-4 py-2 rounded-lg" @click="toggleSection('videoConference')">Video Conference</button>
+        <div v-if="showVideoConference" class="mt-2">
+          <!-- Customization fields for Video Conference -->
+          <div class="mb-2">
+
+            <div class="flex">
+              <button @click="selectPlatform('Google Meet')" :class="{ 'bg-blue-500 text-white': selectedPlatform === 'Google Meet' }" class="flex-1 p-2 mr-2 rounded-lg">Google Meet</button>
+              <button @click="selectPlatform('Zoom')" :class="{ 'bg-blue-500 text-white': selectedPlatform === 'Zoom' }" class="flex-1 p-2 mr-2 rounded-lg">Zoom</button>
+              <button @click="selectPlatform('Microsoft Teams')" :class="{ 'bg-blue-500 text-white': selectedPlatform === 'Microsoft Teams' }" class="flex-1 p-2 rounded-lg">Microsoft Teams</button>
+            </div>
+          </div>
+          <div class="mb-2">
+            <label class="block mb-1">Button Text:</label>
+            <input type="text" v-model="buttonText" placeholder="Button Text">
+          </div>
+          <div class="mb-2">
+            <label class="block mb-1">Button Link:</label>
+            <input type="text" v-model="buttonLink" placeholder="Button Link">
+          </div>
+          <div class="mb-2">
+            <label class="block mb-1">Button Font:</label>
+            <select v-model="buttonFont" class="w-full px-4 py-2 border rounded-lg">
+              <option value="Arial">Arial</option>
+              <option value="Verdana">Verdana</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <!-- Add more font options as needed -->
+            </select>
+          </div>
+        </div>
       </div>
-    </div>
 
     </div>
 
@@ -166,17 +196,25 @@ export default {
       showCTA: false,
       showSignoff: false,
       showMarketplace: false,
-      showCalendar: false,
+      showVideoConference: false,
       ctaCustomization: "",
       signoffCustomization: "",
       marketplaceCustomization: "",
-      calendarCustomization: "",
+      videoConferenceCustomization: "",
       selectedRadioButtonText: "",
       marketplaceLink: "", // Input value for the marketplace link
       isMarketplaceIconVisible: false, // Control the visibility of the icon
       ctaButtonText: "", // Button Text
       ctaButtonLink: "", // Button Link
       ctaButtonFont: "Arial", // Default button font
+      selectedPlatform: "",
+      buttonText: {
+      "Google Meet": "Meet me on Google Meet",
+      "Zoom": "Meet me on Zoom",
+      "Microsoft Teams": "Meet me on Microsoft Teams",
+    },
+      buttonLink: "",
+      buttonFont: "Arial",
     };
   },
   methods: {
@@ -191,7 +229,14 @@ export default {
     },
     toggleMarketplaceIconVisibility() {
     this.isMarketplaceIconVisible = !!this.marketplaceLink; // Toggle visibility based on input value
-  },
+    },
+    selectPlatform(platform) {
+    if (this.selectedPlatform === platform) {
+          this.selectedPlatform = ""; // Deselect the platform if it's already selected
+        } else {
+          this.selectedPlatform = platform; // Otherwise, select the platform
+      }
+    },
   },
 };
 </script>
