@@ -5,71 +5,100 @@
       <div class="mb-4 border-blue-300 border rounded-lg mx-3 min-h-[220px] bg-white">
         <h1 class="bg-gray-100 py-2 rounded-tr-lg rounded-tl-lg px-2">Signature Preview</h1>
         <div class="p-2">
-          <p>{{ generalStore.inputName }}</p>
-          <p>{{ generalStore.inputCompany }} {{ generalStore.inputPosition }} {{ generalStore.inputDepartment }}</p>
-          <div v-for="(field, index) in generalStore.inputFields" :key="index">
-            <p>
-              <span style="color: rgb(54, 115, 238);">{{ field.type }}:</span> {{ field.value }}
-            </p>
+
+          <!-- Sign-off -->
+          <p class="">{{ addonStore.signoffCustomization === 'Custom' ? addonStore.customSignoffText : addonStore.selectedRadioButtonText }}</p>
+          <div class="grid grid-cols-4" >
+            <!-- Image -->
+            
+              <div class="py-4" v-if="imageStore.imagePreviewUrl">
+                <a :href="imageStore.imageLink" target="_blank" >
+                  <img :src="imageStore.imagePreviewUrl" alt="Uploaded Image" class="" :style="{ width: imageStore.computedImageSize, height: imageStore.computedImageSize, 'border-radius': '55%',width: '100%', height: '100%', }">
+                </a>
+              </div>
+            
+
+
+          <!-- General -->
+            <div class="col-span-2 mt-2 ml-2">
+              <p :style="{ fontFamily: designStore.selectedFontFamily,fontSize: designStore.fontSize }">{{ generalStore.inputName }}</p>
+              <p :style="{ fontFamily: designStore.selectedFontFamily,fontSize: designStore.fontSize }">{{ generalStore.inputCompany }} {{ generalStore.inputPosition }} {{ generalStore.inputDepartment }}</p>
+              <div v-for="(field, index) in generalStore.inputFields" :key="index">
+                <p :style="{ fontFamily: designStore.selectedFontFamily }">
+                  <span style="color: rgb(54, 115, 238);">{{ field.type }}:</span> {{ field.value }}
+                </p>
+            </div>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="mt-2 flex items-center">
+              <!-- Colored vertical line -->
+              <div class="w-1 h-full bg-blue-500"></div>
+              <div class="flex px-1 space-x-2 flex-col">
+                <div v-for="(socialLink, index) in socialStore.socialLinks" :key="index" class="py-1">
+                  <template v-if="socialLink.enabled">
+                    <a :href="socialLink.link" target="_blank" class="text-blue-500">
+                      <img :src="socialLink.imageSrc" height="25" width="25" class="clickable-image" alt="" />
+                    </a>
+                  </template>
+                </div>
+              </div>
+            </div>
+
+
+            
+          
           </div>
 
-          <div class="mt-4" v-if="imageStore.imagePreviewUrl">
-            <a :href="imageStore.imageLink" target="_blank">
-              <img :src="imageStore.imagePreviewUrl" alt="Uploaded Image" :style="{ width: imageStore.computedImageSize, height: imageStore.computedImageSize, 'border-radius': '55%' }">
-            </a>
-          </div>
+
+
 
           <div class="mt-4" v-if="imageStore.bannerPreviewUrl">
             <a :href="imageStore.bannerLink" target="_blank">
-              <img :src="imageStore.bannerPreviewUrl" alt="Banner Image" :style="{ width: imageStore.computedBannerWidth }">
+              <img :src="imageStore.bannerPreviewUrl" alt="Banner Image" class="rounded-xl" :style="{ width: imageStore.computedBannerWidth }">
             </a>
           </div>
 
-          <div class="flex items-center space-x-2 pt-2">
-            <div v-for="(socialLink, index) in socialStore.socialLinks" :key="index">
-              <template v-if="socialLink.enabled">
-                <a :href="socialLink.link" target="_blank" class="text-blue-500">
-                  <img :src="socialLink.imageSrc" height="25" width="25" class="clickable-image" alt="" />
-                </a>
-              </template>
-            </div>
-          </div>
 
-          <!-- Button in Preview Section -->
-          <div class="mt-4" v-if="addonStore.ctaButtonText">
+
+          <!-- CTA -->
+          <div class="mt-2" v-if="addonStore.ctaButtonText">
             <a :href="addonStore.ctaButtonLink" target="_blank">
-              <button :style="{ fontFamily: addonStore.ctaButtonFont, backgroundColor: 'lightblue' }" class="px-2">{{ addonStore.ctaButtonText }}</button>
+              <button :style="{ fontFamily: addonStore.ctaButtonFont, backgroundColor: 'lightblue' }" class="px-3 py-1 rounded-md text-md">{{ addonStore.ctaButtonText }}</button>
             </a>
           </div>
-
-          <p class="mt-4">{{ addonStore.signoffCustomization === 'Custom' ? addonStore.customSignoffText : addonStore.selectedRadioButtonText }}</p>
-
-          <!-- Video Conference -->
-          <div class="mt-4" v-if="addonStore.buttonText[addonStore.selectedPlatform]">
-            <a :href="addonStore.buttonLink" target="_blank">
-              <button :style="{ fontFamily: addonStore.buttonFont, backgroundColor: 'lightblue' }" class="px-2">{{ addonStore.buttonText[addonStore.selectedPlatform] }}</button>
-            </a>
-          </div>
-        </div>
-        <!-- Marketplace Icon -->
-        <div class="mt-4 flex flex-row">
-          <div v-for="(marketplace, index) in addonStore.marketplaces" :key="index">
-            <div v-if="marketplace.isIconVisible">
-              <a :href="marketplace.link" target="_blank">
-                <img
-                  :src="marketplace.imageSrc"
-                  :alt="marketplace.imageAlt"
-                  class="mr-2 w-40"
-                  style="width: 100px; height: 50px;"
-                >
-              </a>
-            </div>
-          </div>
-        </div>
 
         
+          <!-- Video Conference -->
+          <div class="mt-2" v-if="addonStore.buttonText[addonStore.selectedPlatform]">
+            <a :href="addonStore.buttonLink" target="_blank">
+              <button :style="{ fontFamily: addonStore.buttonFont, backgroundColor: 'lightblue' }" class="px-2 py-1 rounded-sm ">{{ addonStore.buttonText[addonStore.selectedPlatform] }}</button>
+            </a>
+          </div>
+
+
+                    <!-- Marketplace Icon -->
+          <div class="px-2 flex flex-row">
+            <div v-for="(marketplace, index) in addonStore.marketplaces" :key="index">
+              <div v-if="marketplace.isIconVisible">
+                <a :href="marketplace.link" target="_blank">
+                  <img
+                    :src="marketplace.imageSrc"
+                    :alt="marketplace.imageAlt"
+                    class="mr-2 w-40"
+                    style="width: 100px; height: 50px;"
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+
     </div>
+
 
     <!-- Add-ON -->
 
@@ -108,22 +137,22 @@
           <div class="flex flex-wrap">
             <div class="w-1/2 mb-2">
               <label class="inline-flex items-center">
-                <input type="radio" v-model="addonStore.signoffCustomization" value="Option 1" @change="addonStore.updateSelectedRadioButtonText('Best Regards')"> Best Regards
+                <input type="radio" v-model="addonStore.signoffCustomization" value="Option 1" @change="addonStore.updateSelectedRadioButtonText('Best Regards,')"> Best Regards
               </label>
             </div>
             <div class="w-1/2 mb-2">
                 <label class="inline-flex items-center">
-                  <input type="radio" v-model="addonStore.signoffCustomization" value="Option 2" @change="addonStore.updateSelectedRadioButtonText('Sincerely')"> Sincerely
+                  <input type="radio" v-model="addonStore.signoffCustomization" value="Option 2" @change="addonStore.updateSelectedRadioButtonText('Sincerely,')"> Sincerely
                 </label>
               </div>
               <div class="w-1/2 mb-2">
                 <label class="inline-flex items-center">
-                  <input type="radio" v-model="addonStore.signoffCustomization" value="Option 3" @change="addonStore.updateSelectedRadioButtonText('Regards')"> Regards
+                  <input type="radio" v-model="addonStore.signoffCustomization" value="Option 3" @change="addonStore.updateSelectedRadioButtonText('Regards,')"> Regards
                 </label>
               </div>
               <div class="w-1/2 mb-2">
                 <label class="inline-flex items-center">
-                  <input type="radio" v-model="addonStore.signoffCustomization" value="Option 4" @change="addonStore.updateSelectedRadioButtonText('Best Wishes')"> Best Wishes
+                  <input type="radio" v-model="addonStore.signoffCustomization" value="Option 4" @change="addonStore.updateSelectedRadioButtonText('Best Wishes,')"> Best Wishes
                 </label>
               </div>
             <!-- ... Repeat for other radio options ... -->
@@ -221,6 +250,7 @@ import { useGeneralStore } from '@/store/general';
 import { useImageStore } from '@/store/images';
 import { useSocialsStore } from '@/store/socials';
 import { useAddonStore } from '@/store/addon';
+import { useDesignStore } from '@/store/design';
 
 export default {
   data() {
@@ -229,6 +259,7 @@ export default {
     imageStore: useImageStore(),
     socialStore: useSocialsStore(),
     addonStore: useAddonStore(),
+    designStore: useDesignStore(),
     };
 
 
