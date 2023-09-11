@@ -80,14 +80,14 @@
 
 
                     <!-- Marketplace Icon -->
-          <div class="px-2 flex flex-row">
+          <div class="flex flex-row mt-2">
             <div v-for="(marketplace, index) in addonStore.marketplaces" :key="index">
               <div v-if="marketplace.isIconVisible">
                 <a :href="marketplace.link" target="_blank">
                   <img
                     :src="marketplace.imageSrc"
                     :alt="marketplace.imageAlt"
-                    class="mr-2 w-40"
+                    class="mr-2 w-40 rounded-md"
                     style="width: 100px; height: 35px;"
                   >
                 </a>
