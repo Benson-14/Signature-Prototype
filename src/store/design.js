@@ -16,7 +16,6 @@ export const useDesignStore = defineStore('design', {
     getters: {
     fontSizeStyle: (state) => {
       return {
-        fontFamily: state.selectedFontFamily,
         fontSize: `${state.fontSize}px`, // Convert to a string with "px" unit
       };
     },

@@ -30,17 +30,19 @@
             </div>
             </div>
 
-            <!-- Social Icons -->
+            <!-- Social Icons --> 
             <div class="mt-2 flex items-center">
               <!-- Colored vertical line -->
-              <div class="w-1 h-full bg-blue-500"></div>
-              <div class="flex px-1 space-x-2 flex-col">
-                <div v-for="(socialLink, index) in socialStore.socialLinks" :key="index" class="py-1">
-                  <template v-if="socialLink.enabled">
-                    <a :href="socialLink.link" target="_blank" class="text-blue-500">
-                      <img :src="socialLink.imageSrc" height="25" width="25" class="clickable-image" alt="" />
-                    </a>
-                  </template>
+              <div class="w-1 h-full bg-blue-500 rounded mr-2"></div>
+              <div class="flex space-y-0 flex-col"> <!-- Remove px-1 class -->
+                <div v-for="(socialLink, index) in socialStore.socialLinks" :key="index">
+                  <div class="flex items-center "> <!-- Add this div -->
+                    <template v-if="socialLink.enabled">
+                      <a :href="socialLink.link" target="_blank" class="text-blue-500">
+                        <img :src="socialLink.imageSrc" height="25" width="25" class="clickable-image py-1" alt="" />
+                      </a>
+                    </template>
+                  </div>
                 </div>
               </div>
             </div>
@@ -86,7 +88,7 @@
                     :src="marketplace.imageSrc"
                     :alt="marketplace.imageAlt"
                     class="mr-2 w-40"
-                    style="width: 100px; height: 50px;"
+                    style="width: 100px; height: 35px;"
                   >
                 </a>
               </div>

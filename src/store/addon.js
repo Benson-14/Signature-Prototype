@@ -27,7 +27,7 @@ export const useAddonStore = defineStore({
     marketplaces: [
       {
         title: "Marketplace 1",
-        imageSrc: "https://cdn-icons-png.flaticon.com/128/1384/1384060.png",
+        imageSrc: "https://img.mysignature.io/addons/v2/googleplay_shape1_black.png",
         imageAlt: "Buy on Playstore",
         link: "",
         linkPlaceholder: "Playstore Link",
@@ -35,7 +35,7 @@ export const useAddonStore = defineStore({
       },
       {
         title: "Marketplace 2",
-        imageSrc: "https://cdn-icons-png.flaticon.com/128/1384/1384060.png",
+        imageSrc: "https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg",
         imageAlt: "Buy on Apple",
         link: "",
         linkPlaceholder: "Apple Link",
@@ -43,7 +43,7 @@ export const useAddonStore = defineStore({
       },
       {
         title: "Marketplace 3",
-        imageSrc: "https://cdn-icons-png.flaticon.com/128/1384/1384060.png",
+        imageSrc: "https://www.freeiconspng.com/uploads/amazon-icon-22.png",
         imageAlt: "Buy on Amazon",
         link: "",
         linkPlaceholder: "Amazon Link",

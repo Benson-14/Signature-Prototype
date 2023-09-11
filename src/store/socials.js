@@ -5,6 +5,7 @@ export const useSocialsStore = defineStore('socials', {
     return {
       caption: '',
       textFields: [],
+      hasEnabledIcons: false,
       socialLinks: [
         { imageSrc: 'https://cdn-icons-png.flaticon.com/128/4494/4494475.png', link: '', enabled: false },
         { imageSrc: 'https://cdn-icons-png.flaticon.com/128/4138/4138124.png', link: '', enabled: false },
@@ -36,4 +37,5 @@ export const useSocialsStore = defineStore('socials', {
     },
     // Define other actions here as needed
   },
+
 });

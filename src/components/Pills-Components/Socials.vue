@@ -30,20 +30,29 @@
             </div>
             </div>
 
-            <!-- Social Icons -->
+
+            <!-- Social Icons --> 
             <div class="mt-2 flex items-center">
               <!-- Colored vertical line -->
-              <div class="w-1 h-full bg-blue-500"></div>
-              <div class="flex px-1 space-x-2 flex-col">
-                <div v-for="(socialLink, index) in socialStore.socialLinks" :key="index" class="py-1">
-                  <template v-if="socialLink.enabled">
-                    <a :href="socialLink.link" target="_blank" class="text-blue-500">
-                      <img :src="socialLink.imageSrc" height="25" width="25" class="clickable-image" alt="" />
-                    </a>
-                  </template>
+              <div class="w-1 h-full bg-blue-500 rounded mr-2"></div>
+              <div class="flex space-y-0 flex-col"> <!-- Remove px-1 class -->
+                <div v-for="(socialLink, index) in socialStore.socialLinks" :key="index">
+                  <div class="flex items-center "> <!-- Add this div -->
+                    <template v-if="socialLink.enabled">
+                      <a :href="socialLink.link" target="_blank" class="text-blue-500">
+                        <img :src="socialLink.imageSrc" height="25" width="25" class="clickable-image py-1" alt="" />
+                      </a>
+                    </template>
+                  </div>
                 </div>
               </div>
             </div>
+
+
+
+
+
+
 
 
             
@@ -86,7 +95,7 @@
                     :src="marketplace.imageSrc"
                     :alt="marketplace.imageAlt"
                     class="mr-2 w-40"
-                    style="width: 100px; height: 50px;"
+                    style="width: 100px; height: 35px;"
                   >
                 </a>
               </div>
@@ -104,8 +113,9 @@
       <h1 class="pl-8 py-3 bg-slate-100 text-sm">Add Social Links</h1>
 
       <!-- Add Social Link -->
-
-      <div class="relative mx-8 mt-8">
+    
+      <div class="relative mx-8 mt-6">
+        <!--
         <label for="name" class="absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-light text-gray-900">Captions</label>
         <input
           v-model="socialStore.caption"
@@ -114,7 +124,7 @@
           id="name"
           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
           placeholder=""
-        />
+        />  -->
 
         <!-- Social Link Fields Container -->
         <div id="socialLinkContainer">
@@ -159,13 +169,13 @@
         <div class="relative inline-block">
           <div id="imageContainer">
             <button @click="socialStore.createTextField('../Icons/facebook.png')" class="py-1 px-2">
-              <img src="../Icons/slack.png" height="25" width="25" class="clickable-image" alt="" />
+              <img src="@/assets/Icons/slack.png" height="25" width="25" class="clickable-image" alt="" />
             </button>
             <button @click="socialStore.createTextField('../Icons/instagram.png')" class="py-1 px-2">
-              <img src="../Icons/telegram.png" height="25" width="25" class="clickable-image" alt="" />
+              <img src="@/assets/Icons/telegram.png" height="25" width="25" class="clickable-image" alt="" />
             </button>
             <button @click="socialStore.createTextField('../Icons/linkedin.png')" class="py-1 px-2">
-              <img src="../Icons/tiktok.png" height="25" width="25" class="clickable-image" alt="" />
+              <img src="@/assets/Icons/tiktok.png" height="25" width="25" class="clickable-image" alt="" />
             </button>
           </div>
         </div>
