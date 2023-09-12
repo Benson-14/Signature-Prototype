@@ -108,23 +108,23 @@
       <div class="mx-3 border-blue-300 border rounded-lg md:flex-1">
         <h1 class="pl-8 py-3 bg-slate-100 text-sm font-normal">General Styles</h1>
 
-<div class="flex justify-center">
-  <div class="flex w-full">
-    <!-- Left Side for Style Options -->
-    <div class="w-full p-8 bg-white">
-        <!-- Font Family -->
-        <div class="mb-6 flex">
-            <label class="block pt-2 text-sm font-light w-1/3">Font Family</label>
-            <select class="block w-2/3 p-1 border border-gray-300 rounded" v-model="designStore.selectedFontFamily">
-                <!-- Add your font family options here -->
-                <option value="Arial, sans-serif">Arial, sans-serif</option>
-                <option value="Helvetica, sans-serif">Helvetica, sans-serif</option>
-                <option value="Verdana, sans-serif">Verdana, sans-serif</option>
-                <option value="Georgia, serif">Georgia, serif</option>
-                <option value="Times New Roman, serif">Times New Roman, serif</option>
-                <option value="Courier New, monospace">Courier New, monospace</option>
-            </select>
-        </div>
+          <div class="flex justify-center">
+            <div class="flex w-full">
+              <!-- Left Side for Style Options -->
+              <div class="w-full p-8 bg-white">
+                  <!-- Font Family -->
+                  <div class="mb-6 flex">
+                      <label class="block pt-2 text-sm font-light w-1/3">Font Family</label>
+                      <select class="block w-2/3 p-1 border border-gray-300 rounded" v-model="designStore.selectedFontFamily">
+                          <!-- Add your font family options here -->
+                          <option value="Arial, sans-serif">Arial, sans-serif</option>
+                          <option value="Helvetica, sans-serif">Helvetica, sans-serif</option>
+                          <option value="Verdana, sans-serif">Verdana, sans-serif</option>
+                          <option value="Georgia, serif">Georgia, serif</option>
+                          <option value="Times New Roman, serif">Times New Roman, serif</option>
+                          <option value="Courier New, monospace">Courier New, monospace</option>
+                      </select>
+                  </div>
 
         <!-- Font Size -->
         <div class="mb-6 flex">

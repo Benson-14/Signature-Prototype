@@ -107,7 +107,7 @@
     <div class="mx-3 border-blue-300 border rounded-lg md:flex-1">
       <h1 class="pl-8 py-3 bg-slate-100 text-sm mb-2">Add-Ons</h1>
       <!-- CTA Section -->
-      <div class="relative mb-4 lg:mx-4 mx-2">
+      <div class=" mb-4 lg:mx-4 mx-2">
         <button class="border w-full text-left hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 hover:text-white px-4 py-2 rounded-lg" @click="addonStore.toggleSection('CTA')">CTA</button>
         <div v-if="addonStore.showCTA" class="mt-2 border border-blue-500 rounded-lg px-4 py-4">
           <!-- Customization fields for CTA -->
@@ -132,7 +132,7 @@
       </div>
 
       <!-- Sign-off Section -->
-      <div class="relative mb-4 lg:mx-4 mx-2">
+      <div class="mb-4 lg:mx-4 mx-2">
         <button class="border w-full text-left hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 hover:text-white px-4 py-2 rounded-lg" @click="addonStore.toggleSection('signoff')">Sign-off</button>
         <div v-if="addonStore.showSignoff" class="mt-2 px-4 py-4 border border-blue-500 rounded-lg">
           <!-- Customization fields for Sign-off -->
@@ -176,7 +176,7 @@
       </div>
 
       <!-- Marketplace Section -->
-      <div class="relative mb-4 lg:mx-4 mx-2">
+      <div class="mb-4 lg:mx-4 mx-2">
         <button class="border w-full text-left hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 hover:text-white px-4 py-2 rounded-lg" @click="addonStore.toggleSection('marketplace')">Marketplace</button>
         <div v-if="addonStore.showMarketplace" class="mt-2 flex flex-wrap items-center border border-blue-500 rounded-lg px-4 py-4">
           <div
@@ -212,7 +212,7 @@
       </div>
 
       <!-- Video Conference Section -->
-      <div class="relative mb-4 lg:mx-4 mx-2">
+      <div class="mb-4 lg:mx-4 mx-2">
         <button class="border w-full text-left hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 hover:text-white px-4 py-2 rounded-lg" @click="addonStore.toggleSection('videoConference')">Video Conference</button>
         <div v-if="addonStore.showVideoConference" class="mt-2 border border-blue-500 rounded-lg px-4">
           <!-- Customization fields for Video Conference -->

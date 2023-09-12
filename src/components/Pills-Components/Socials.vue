@@ -114,7 +114,7 @@
 
       <!-- Add Social Link -->
     
-      <div class="relative mx-8 mt-6">
+      <div class=" mx-8 mt-6">
         <!--
         <label for="name" class="absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-light text-gray-900">Captions</label>
         <input
@@ -136,14 +136,14 @@
               placeholder="Enter social link here"
               class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  sm:text-sm sm:leading-6"
             />
-            <button @click="socialStore.toggleSocialLink(index)" type="button" class="bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none" role="switch" :aria-checked="socialLink.enabled" :class="{'bg-blue-200': socialLink.enabled, 'bg-gray-200': !socialLink.enabled}">
+            <button @click="socialStore.toggleSocialLink(index)" type="button" class="bg-gray-200 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none" role="switch" :aria-checked="socialLink.enabled" :class="{'bg-blue-200': socialLink.enabled, 'bg-gray-200': !socialLink.enabled}">
               <span :class="{'translate-x-5': socialLink.enabled, 'translate-x-0': !socialLink.enabled}" aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
             </button>
           </div>
         </div>
       </div>
 
-      <div class="relative mx-8 mt-8">
+      <div class=" mx-8 mt-8">
         <!-- Text Field Container -->
         <div id="textFieldContainer">
           <div class="flex-1 relative">
@@ -165,8 +165,8 @@
       <h1 class="pl-8 py-3 bg-slate-100 text-sm">Gallery</h1>
 
       <!-- Gallery -->
-      <div class="relative mx-8 my-4">
-        <div class="relative inline-block">
+      <div class=" mx-8 my-4">
+        <div class="inline-block">
           <div id="imageContainer">
             <button @click="socialStore.createTextField('../Icons/facebook.png')" class="py-1 px-2">
               <img src="@/assets/Icons/slack.png" height="25" width="25" class="clickable-image" alt="" />
