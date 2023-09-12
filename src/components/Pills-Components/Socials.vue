@@ -20,12 +20,12 @@
 
 
           <!-- General -->
-            <div class="col-span-2 mt-2 ml-2">
-              <p :style="{ fontFamily: designStore.selectedFontFamily,fontSize: designStore.fontSize }">{{ generalStore.inputName }}</p>
-              <p :style="{ fontFamily: designStore.selectedFontFamily,fontSize: designStore.fontSize }">{{ generalStore.inputCompany }} {{ generalStore.inputPosition }} {{ generalStore.inputDepartment }}</p>
+          <div class="col-span-2 mt-2 ml-2">
+              <p :style="{ fontFamily: designStore.selectedFontFamily,fontSize: designStore.fontSize + 'px', color: designStore.textColor, }">{{ generalStore.inputName }}</p>
+              <p :style="{ fontFamily: designStore.selectedFontFamily,fontSize: designStore.fontSize + 'px', color: designStore.textColor, }">{{ generalStore.inputCompany }} {{ generalStore.inputPosition }} {{ generalStore.inputDepartment }}</p>
               <div v-for="(field, index) in generalStore.inputFields" :key="index">
-                <p :style="{ fontFamily: designStore.selectedFontFamily }">
-                  <span style="color: rgb(54, 115, 238);">{{ field.type }}:</span> {{ field.value }}
+                <p :style="{ fontFamily: designStore.selectedFontFamily, fontSize: designStore.fontSize + 'px', color: designStore.textColor, }">
+                  <span :style="{ color: designStore.templateColor }">{{ field.type }}:</span> {{ field.value }}
                 </p>
             </div>
             </div>
@@ -34,7 +34,7 @@
             <!-- Social Icons --> 
             <div class="mt-2 flex items-center">
               <!-- Colored vertical line -->
-              <div class="w-1 h-full bg-blue-500 rounded mr-2"></div>
+              <div class="w-1 h-full rounded mr-2" :style="{ backgroundColor: designStore.templateColor }"></div>
               <div class="flex space-y-0 flex-col"> <!-- Remove px-1 class -->
                 <div v-for="(socialLink, index) in socialStore.socialLinks" :key="index">
                   <div class="flex items-center "> <!-- Add this div -->
@@ -143,24 +143,24 @@
         </div>
       </div>
 
-      <div class=" mx-8 mt-8">
+      <div class=" mx-8 mt-2">
         <!-- Text Field Container -->
         <div id="textFieldContainer">
-          <div class="flex-1 relative">
+          <div class="flex-1">
             <!-- Dynamically generated text fields will be appended here -->
-            <div v-for="(textField, index) in socialStore.textFields" :key="index">
+            <div v-for="(textField, index) in socialStore.textFields" :key="index" class="flex items-center space-x-2 py-2">
               <img :src="textField.imageSrc" height="25" width="25" class="clickable-image" alt="" />
               <input
                 v-model="textField.text"
                 type="text"
-                placeholder="Enter text here"
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                placeholder="Enter social link here"
+                class="flex-1 rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
               />
-              <button @click="socialStore.removeTextField(index)" class="py-1 px-2 ml-2 text-red-500">Remove</button>
+              <button @click="socialStore.removeTextField(index)" class="py-1 px-4 ml-2 text-red-500">X</button>
             </div>
           </div>
         </div>
-      </div>
+      </div>  
 
       <h1 class="pl-8 py-3 bg-slate-100 text-sm">Gallery</h1>
 

@@ -20,12 +20,12 @@
 
 
           <!-- General -->
-            <div class="col-span-2 mt-2 ml-2">
-              <p :style="{ fontFamily: designStore.selectedFontFamily,fontSize: designStore.fontSize }">{{ generalStore.inputName }}</p>
-              <p :style="{ fontFamily: designStore.selectedFontFamily,fontSize: designStore.fontSize }">{{ generalStore.inputCompany }} {{ generalStore.inputPosition }} {{ generalStore.inputDepartment }}</p>
+          <div class="col-span-2 mt-2 ml-2">
+              <p :style="{ fontFamily: designStore.selectedFontFamily,fontSize: designStore.fontSize + 'px', color: designStore.textColor, }">{{ generalStore.inputName }}</p>
+              <p :style="{ fontFamily: designStore.selectedFontFamily,fontSize: designStore.fontSize + 'px', color: designStore.textColor, }">{{ generalStore.inputCompany }} {{ generalStore.inputPosition }} {{ generalStore.inputDepartment }}</p>
               <div v-for="(field, index) in generalStore.inputFields" :key="index">
-                <p :style="{ fontFamily: designStore.selectedFontFamily }">
-                  <span style="color: rgb(54, 115, 238);">{{ field.type }}:</span> {{ field.value }}
+                <p :style="{ fontFamily: designStore.selectedFontFamily, fontSize: designStore.fontSize + 'px', color: designStore.textColor, }">
+                  <span :style="{ color: designStore.templateColor }">{{ field.type }}:</span> {{ field.value }}
                 </p>
             </div>
             </div>
@@ -33,7 +33,7 @@
             <!-- Social Icons --> 
             <div class="mt-2 flex items-center">
               <!-- Colored vertical line -->
-              <div class="w-1 h-full bg-blue-500 rounded mr-2"></div>
+              <div class="w-1 h-full rounded mr-2" :style="{ backgroundColor: designStore.templateColor }"></div>
               <div class="flex space-y-0 flex-col"> <!-- Remove px-1 class -->
                 <div v-for="(socialLink, index) in socialStore.socialLinks" :key="index">
                   <div class="flex items-center "> <!-- Add this div -->
@@ -135,8 +135,7 @@
             min="10"
             max="50"
             step="1"
-            :value="designStore.fontSize"
-            @input="designStore.setFontSize($event.target.value)"
+            v-model="designStore.fontSize"
           />
         </div>
 
@@ -144,7 +143,7 @@
         <div class="mb-6 flex">
             <label class="block pt-2 text-sm font-light w-1/3">Template Color</label>
             <div class="rounded-full overflow-hidden">
-              <input type="color" class="block w-8 border-none" value="#3574e8" >
+              <input type="color" class="block w-8 border-none" v-model="designStore.templateColor"  >
           </div>
         </div>
 
@@ -152,7 +151,7 @@
         <div class="mb-6 flex">
           <label class="block pt-2 text-sm font-light w-1/3">Text Color</label>
           <div class="rounded-full overflow-hidden">
-            <input type="color" class="block w-8 border-none" value="#3574e8" >
+            <input type="color" class="block w-8 border-none" v-model="designStore.textColor" >
         </div>
       </div>
     </div>
