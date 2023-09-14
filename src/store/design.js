@@ -6,19 +6,12 @@ export const useDesignStore = defineStore('design', {
     fontSize: 16,
     templateColor: '#3574e8',
     textColor: '#3574e8',
+    selectedStyle: 'Branded',
+    selectedIconShape: 'square',
+    iconColor: '#3574e8',
+    iconSize: 25,
     // Add other design-related state properties here
   }),
-  methods: {
-    setFontSize(fontSize) {
-        this.fontSize = fontSize;
-      },
-  },
-    getters: {
-    fontSizeStyle: (state) => {
-      return {
-        fontSize: `${state.fontSize}px`, // Convert to a string with "px" unit
-      };
-    },
-  },
+
 
 });

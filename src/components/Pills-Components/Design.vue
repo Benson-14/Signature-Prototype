@@ -34,7 +34,7 @@
             type="range"
             class="block w-2/3 p-2 rounded"
             min="10"
-            max="50"
+            max="30"
             step="1"
             v-model="designStore.fontSize"
           />
@@ -44,7 +44,7 @@
         <div class="mb-6 flex">
             <label class="block pt-2 text-sm font-light w-1/3">Template Color</label>
             <div class="rounded-full overflow-hidden">
-              <input type="color" class="block w-8 border-none" v-model="designStore.templateColor"  >
+              <input type="color" class="block w-8 border-none" v-model="designStore.templateColor" >
           </div>
         </div>
 
@@ -64,25 +64,35 @@
 <h1 class="pl-8 py-3 bg-slate-100 text-sm font-normal">Social Icons</h1>
 
 
-<div class="flex justify-center pt-8">
-  <div class="flex w-full">
-    <!-- Left Side for Style Options -->
-    <div class="w-full px-8 bg-white flex flex-wrap justify-start">
-      <div class="flex items-center">
-        <input id="email" name="notification-method" type="radio" checked class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-indigo-600">
-        <label for="email" class="ml-3 block text-xs font-light leading-6 text-gray-900 bg-blue-400 rounded-full px-4">Branded</label>
+  <div class="flex justify-center pt-8">
+    <div class="flex w-full">
+      <!-- Left Side for Style Options -->
+      <div class="w-full px-8 bg-white flex flex-wrap justify-start">
+        <div class="flex items-center">
+          <input
+            id="branded"
+            name="style-option"
+            type="radio"
+            class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-indigo-600"
+            v-model="designStore.selectedStyle"
+            value="Branded"
+          />
+          <label for="branded" class="ml-3 block text-xs font-light leading-6 text-gray-900 bg-blue-400 rounded-full px-4">Branded</label>
+        </div>
+        <div class="flex items-center">
+          <input
+            id="colored"
+            name="style-option"
+            type="radio"
+            class="h-4 w-4 ml-4 border-gray-300 text-blue-600 focus:ring-indigo-600"
+            v-model="designStore.selectedStyle"
+            value="Colored"
+          />
+          <label for="colored" class="ml-3 block text-xs font-light leading-6 text-gray-900 bg-gray-300 rounded-full px-4">Colored</label>
+        </div>
       </div>
-      <div class="flex items-center">
-        <input id="email" name="notification-method" type="radio" checked class="h-4 w-4 ml-4 border-gray-300 text-blue-600 focus:ring-indigo-600">
-        <label for="email" class="ml-3 block text-xs font-light leading-6 text-gray-900 bg-gray-300 rounded-full px-4">Colored</label>
-      </div>
-
     </div>
-
-</div>
-
-
-</div>
+  </div>
 
 <div class="flex justify-center ml-0">
   <div class="flex w-full">
@@ -93,8 +103,20 @@
         <div class="mb-6 flex">
           <label class="block pt-2 text-sm font-light w-1/3">Icon Shape</label>
           <div class="ml-2 flex items-center space-x-4">
-              <input id="square" name="icon-shape" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-indigo-600 rounded-md">
-              <input id="circle" name="icon-shape" type="radio" class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-indigo-600 rounded-full">
+            <input
+              id="square"
+              name="icon-shape"
+              type="radio"
+              v-model="designStore.selectedIconShape"
+              class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-indigo-600 rounded-md"
+            />
+            <input
+              id="circle"
+              name="icon-shape"
+              type="radio"
+              v-model="designStore.selectedIconShape"
+              class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-indigo-600 rounded-full"
+            />
           </div>
         </div>
 
@@ -102,22 +124,15 @@
         <!-- Icon Size -->
         <div class="mb-6 flex">
           <label class="block pt-2 text-sm font-light w-1/3">Icon Size</label>
-          <input type="range" class="block w-2/3 p-2 rounded" min="10" max="100" step="1" value="16" style="background: linear-gradient(to right, blue, blue) no-repeat; background-size: calc(((16 - 10) / (100 - 10)) * 100% + 1px) 100%;">
+          <input type="range" class="block w-2/3 p-2 rounded" min="15" max="30" step="1" v-model="designStore.iconSize" style="background: linear-gradient(to right, blue, blue) no-repeat; background-size: calc(((16 - 10) / (100 - 10)) * 100% + 1px) 100%;">
       </div>
 
-        <!-- Icon Color -->
-        <div class="mb-6 flex">
-            <label class="block pt-2 text-sm font-light w-1/3">Icon Color</label>
-            <div class="rounded-full overflow-hidden">
-              <input type="color" class="block w-8 border-none" value="#3574e8" >
-          </div>
-        </div>
 
         <!-- Icon Background -->
         <div class="mb-6 flex">
           <label class="block pt-2 text-sm font-light w-1/3">Icon Background</label>
           <div class="rounded-full overflow-hidden">
-            <input type="color" class="block w-8 border-none" value="#3574e8" >
+            <input type="color" class="block w-8 border-none" v-model="designStore.iconColor" >
         </div>
       </div>
     </div>
