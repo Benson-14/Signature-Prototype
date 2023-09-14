@@ -19,7 +19,7 @@ export const useAddonStore = defineStore({
     selectedPlatform: "",
     buttonText: {
     "Google Meet": "Meet me on Google Meet",
-    "Zoom": "Meet me on Zoom",
+    "Calendly": "Meet me on Calendly",
     "Microsoft Teams": "Meet me on Microsoft Teams",
   },
     buttonLink: "",
@@ -39,14 +39,6 @@ export const useAddonStore = defineStore({
         imageAlt: "Buy on Apple",
         link: "",
         linkPlaceholder: "Apple Link",
-        isIconVisible: false,
-      },
-      {
-        title: "Marketplace 3",
-        imageSrc: "https://www.freeiconspng.com/uploads/amazon-icon-22.png",
-        imageAlt: "Buy on Amazon",
-        link: "",
-        linkPlaceholder: "Amazon Link",
         isIconVisible: false,
       },
       // Add more marketplace sections as needed

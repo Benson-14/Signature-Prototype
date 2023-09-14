@@ -4,11 +4,12 @@ import { defineStore } from 'pinia';
 
 export const useImageStore = defineStore('image', {
   state: () => ({
-    imagePreviewUrl: null,
     imageSize: 30, // Initial image width
     imageLink: '',
     bannerWidth: 50, // Initial banner width
     bannerLink: '',
+    imagePreviewUrl: null,
+    bannerPreviewUrl: null, 
   }),
   getters: {
     computedImageSize: (state) => `${state.imageSize}%`,
@@ -34,6 +35,12 @@ export const useImageStore = defineStore('image', {
         };
         reader.readAsDataURL(file);
       }
+    },
+    removeImage() {
+      this.imagePreviewUrl = null;
+    },
+    removeBannerImage() {
+      this.bannerPreviewUrl = null;
     },
   },
 });

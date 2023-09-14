@@ -1,9 +1,14 @@
 <template>
-    <div class="pt-4 sticky top-12 bg-white md:flex-1 md:pt-0">
-      <div class="mb-4 border-blue-300 border rounded-lg mx-3 min-h-[220px] bg-white">
+  <div class="pt-4 mb-4 sticky top-12 bg-white md:flex-1 md:pt-0">
+    <!-- Parent Div with Blue Border -->
+    <div class="border-blue-300 border rounded-lg mx-3  bg-white flex flex-col">
+      <!-- Signature Preview Heading -->
+      <div class="mb-0">
         <h1 class="bg-gray-100 py-2 rounded-tr-lg rounded-tl-lg px-2">Signature Preview</h1>
-        <div class="p-2">
+      </div>
 
+      <!-- Content Container -->
+      <div class="p-2 "  >
           <!-- Sign-off -->
           <p class="">{{ addonStore.signoffCustomization === 'Custom' ? addonStore.customSignoffText : addonStore.selectedRadioButtonText }}</p>
           <div class="grid grid-cols-4" >
@@ -11,10 +16,9 @@
             
               <div class="py-4" v-if="imageStore.imagePreviewUrl">
                 <a :href="imageStore.imageLink" target="_blank" >
-                  <img :src="imageStore.imagePreviewUrl" alt="Uploaded Image" class="" :style="{ width: imageStore.computedImageSize, height: imageStore.computedImageSize, 'border-radius': '55%',width: '100%', height: '100%', }">
+                  <img :src="imageStore.imagePreviewUrl" alt="Uploaded Image" class="" :style="{ width: imageStore.computedImageSize, height: imageStore.computedImageSize, 'border-radius': '55%', width: '100%', height: '100%' }">
                 </a>
               </div>
-            
 
 
           <!-- General -->
@@ -37,7 +41,7 @@
                   <div class="flex items-center">
                     <template v-if="socialLink.enabled">
                       <a :href="socialLink.link" target="_blank" class="text-blue-500">
-                        <img :src="socialLink.imageSrc" height="25" width="25" :style="{ backgroundColor: designStore.iconColor, borderRadius: designStore.selectedIconShape === 'circle' ? '50%' : '0',  }" class="clickable-image my-0.5 " alt="" />
+                        <img :src="socialLink.imageSrc" height="25" width="25" :style="{ backgroundColor: designStore.iconColor, borderRadius: designStore.selectedIconShape === 'circle' ? '50%' : '0',  }" class="clickable-image my-0.5 rounded-md" alt="" />
                       </a>
                     </template>
                   </div>
@@ -92,13 +96,18 @@
               </div>
             </div>
           </div>
-        </div>
-
       </div>
-
-
+          <!-- Add to Dashboard and Cancel Buttons -->
+    <div class="flex justify-end self-end my-4 pt-4 mx-3">
+      <button class="px-3 py-1 rounded-lg text-md text-blue-500 mr-2">Cancel</button>
+      <button class="px-3 py-1 rounded-md text-md text-white bg-blue-500">Add to Dashboard</button>
     </div>
+  </div>
+    </div>
+
+
 </template>
+
 
 <script>
 import { useGeneralStore } from '@/store/general';

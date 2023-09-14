@@ -1,5 +1,5 @@
 <template>
-  <div class="md:flex md:flex-row-reverse md:gap-10 bg-white md:mx-10 md:pt-2 md:pb-6 md:px-12 md:justify-center md:rounded-br-lg md:rounded-bl-lg mb-6 lg:mx-32">
+  <div class="md:flex md:flex-row-reverse md:gap-10 bg-white md:mx-10 md:pt-2 md:pb-6 md:px-12 md:justify-center md:rounded-br-lg md:rounded-bl-lg mb-6 lg:mx-36">
     <!-- Preview -->
     <Preview/>
 
@@ -24,7 +24,7 @@
         <!-- Social Link Fields Container -->
         <div id="socialLinkContainer">
           <div v-for="(socialLink, index) in socialStore.socialLinks" :key="index" class="flex items-center space-x-2 my-4">
-            <img :src="socialLink.imageSrc" height="25" width="25" class="clickable-image" alt="" />
+            <img :src="socialLink.imageSrc" height="25" width="25" class="clickable-image rounded-sm" alt="" />
             <input
               v-model="socialLink.link"
               type="text"

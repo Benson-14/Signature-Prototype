@@ -1,5 +1,5 @@
 <template>
-  <div class="md:flex md:flex-row-reverse md:gap-10 bg-white md:mx-10 md:pt-2 md:pb-6 md:px-12 md:justify-center md:rounded-br-lg md:rounded-bl-lg mb-6 lg:mx-32">
+  <div class="md:flex md:flex-row-reverse md:gap-10 bg-white md:mx-10 md:pt-2 md:pb-6 md:px-12 md:justify-center md:rounded-br-lg md:rounded-bl-lg mb-6 lg:mx-36">
     <!-- Preview -->
     <Preview/>
 
@@ -121,7 +121,7 @@
           <div class="mb-2 py-4">
             <div class="flex">
               <button @click="addonStore.selectPlatform('Google Meet')" :class="{ 'bg-blue-500 text-white': addonStore.selectedPlatform === 'Google Meet' }" class="flex-1 p-2 mr-2 rounded-lg border border-blue-500">Google Meet</button>
-              <button @click="addonStore.selectPlatform('Zoom')" :class="{ 'bg-blue-500 text-white': addonStore.selectedPlatform === 'Zoom' }" class="flex-1 p-2 mr-2 rounded-lg border border-blue-500">Zoom</button>
+              <button @click="addonStore.selectPlatform('Calendly')" :class="{ 'bg-blue-500 text-white': addonStore.selectedPlatform === 'Calendly' }" class="flex-1 p-2 mr-2 rounded-lg border border-blue-500">Calendly</button>
               <button @click="addonStore.selectPlatform('Microsoft Teams')" :class="{ 'bg-blue-500 text-white': addonStore.selectedPlatform === 'Microsoft Teams' }" class="flex-1 p-2 rounded-lg border border-blue-500">Microsoft Teams</button>
             </div>
           </div>

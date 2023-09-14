@@ -24,12 +24,12 @@ export const useSocialsStore = defineStore('socials', {
       hasEnabledIcons: false,
       selectedStyle: 'Branded',
       socialLinks: [
-        { imageSrc: 'Brande' === 'Branded' ? facebook : facebookc, link: '', enabled: false },
-        { imageSrc: 'Brande' === 'Branded' ? instagram : instagramc, link: '', enabled: false },
-        { imageSrc: 'Brande' === 'Branded' ? linkedin : linkedinc, link: '', enabled: false },
-        { imageSrc: 'Brande' === 'Branded' ? whatsapp : whatsappc, link: '', enabled: false },
-        { imageSrc: 'Brande' === 'Branded' ? twitter : twitterc, link: '', enabled: false },
-        { imageSrc: 'Brande' === 'Branded' ? youtube : youtubec, link: '', enabled: false },
+        { imageSrc: 'Branded' === 'Branded' ? facebook : facebookc, link: '', enabled: false },
+        { imageSrc: 'Branded' === 'Branded' ? instagram : instagramc, link: '', enabled: false },
+        { imageSrc: 'Branded' === 'Branded' ? linkedin : linkedinc, link: '', enabled: false },
+        { imageSrc: 'Branded' === 'Branded' ? whatsapp : whatsappc, link: '', enabled: false },
+        { imageSrc: 'Branded' === 'Branded' ? twitter : twitterc, link: '', enabled: false },
+        { imageSrc: 'Branded' === 'Branded' ? youtube : youtubec, link: '', enabled: false },
       ],
       
       galleryIcons: [

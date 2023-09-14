@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-full py-8 rounded-tr-lg rounded-tl-lg hidden bg-white md:flex md:justify-center md:mx-4 lg:mx-32">
+  <div class="max-w-full py-8 rounded-tr-lg rounded-tl-lg hidden bg-white md:flex md:justify-center md:mx-10 lg:mx-36">
     <div class="isolate bg-slate-100 rounded-full overflow-hidden shadow">
     <button @click="showComponent('General')"  class="py-2 px-4 mx-1 text-center text-xs font-medium hover:bg-gray-50 focus:z-10">General</button>
     <button @click="showComponent('Images')"  class="py-2 px-4 mx-1 text-center text-xs font-medium hover:bg-gray-50 focus:z-10">Images</button>
