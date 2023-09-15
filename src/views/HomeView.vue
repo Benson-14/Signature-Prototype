@@ -10,6 +10,8 @@
     <button class="bg-blue-500 text-white py-1 px-3 mx-2 rounded">Install</button>
     <button class="bg-red-500 text-white py-1 px-3 rounded">Delete</button>
   </div>
+
+  
 </div>
 
 

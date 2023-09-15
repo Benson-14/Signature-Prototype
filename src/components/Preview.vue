@@ -100,7 +100,7 @@
           <!-- Add to Dashboard and Cancel Buttons -->
     <div class="flex justify-end self-end my-4 pt-4 mx-3">
       <button class="px-3 py-1 rounded-lg text-md text-blue-500 mr-2">Cancel</button>
-      <button class="px-3 py-1 rounded-md text-md text-white bg-blue-500">Add to Dashboard</button>
+      <button class=" px-3 py-1 rounded-md text-md text-white bg-blue-500">Add to Dashboard</button>
     </div>
   </div>
     </div>
@@ -116,6 +116,7 @@ import { useSocialsStore } from '@/store/socials';
 import { useAddonStore } from '@/store/addon';
 import { useDesignStore } from '@/store/design';
 
+
 export default {
   data() {
     return {
@@ -124,6 +125,7 @@ export default {
       socialStore: useSocialsStore(),
       addonStore: useAddonStore(),
       designStore: useDesignStore(),
+
     };
   },
 
