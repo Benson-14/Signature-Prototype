@@ -63,14 +63,13 @@
       <div class=" mx-8 my-4">
         <div class="inline-block">
           <div id="imageContainer">
-            <button @click="socialStore.createTextField('../Icons/facebook.png')" class="py-1 px-2">
-              <img src="@/assets/Icons/slack.png" height="25" width="25" class="clickable-image" alt="" />
-            </button>
-            <button @click="socialStore.createTextField('../Icons/instagram.png')" class="py-1 px-2">
-              <img src="@/assets/Icons/telegram.png" height="25" width="25" class="clickable-image" alt="" />
-            </button>
-            <button @click="socialStore.createTextField('../Icons/linkedin.png')" class="py-1 px-2">
-              <img src="@/assets/Icons/tiktok.png" height="25" width="25" class="clickable-image" alt="" />
+            <button
+              v-for="(icon, index) in socialStore.galleryIcons"
+              :key="index"
+              @click="socialStore.createTextField(icon)"
+              class="py-1 px-2"
+            >
+              <img :src="icon.imageSrc" height="25" width="25" class="clickable-image" alt="" />
             </button>
           </div>
         </div>
