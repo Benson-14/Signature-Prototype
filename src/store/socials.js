@@ -20,7 +20,6 @@ export const useSocialsStore = defineStore('socials', {
   state() {
     return {
       caption: '',
-      textFields: [],
       hasEnabledIcons: false,
       selectedStyle: 'Branded',
       socialLinks: [
@@ -31,11 +30,11 @@ export const useSocialsStore = defineStore('socials', {
         { imageSrc: 'Branded' === 'Branded' ? twitter : twitterc, link: '', enabled: false },
         { imageSrc: 'Branded' === 'Branded' ? youtube : youtubec, link: '', enabled: false },
       ],
-      
+      textFields: [],
       galleryIcons: [
-        { imageSrc: slack },
-        { imageSrc: telegram },
-        { imageSrc: tiktok },
+        { imageSrc: slack, enabled: true },
+        { imageSrc: telegram, enabled: true },
+        { imageSrc: tiktok,  enabled: true },
         // Add more icons as needed
       ],
     };
@@ -53,15 +52,24 @@ export const useSocialsStore = defineStore('socials', {
 
       // Add the new text field to the list
       this.textFields.push(newTextField);
+
+      // Disable the icon in the gallery
+      icon.enabled = false;
     },
     removeTextField(index) {
       // Remove the text field at the specified index
       this.textFields.splice(index, 1);
+      
+      // Enable the corresponding icon in the gallery
+      this.galleryIcons[index].enabled = true;
     },
     toggleSocialLink(index) {
       // Toggle the enabled state of the social link at the specified index
       this.socialLinks[index].enabled = !this.socialLinks[index].enabled;
     },
+
+    
+
     // Define other actions here as needed
   },
 
