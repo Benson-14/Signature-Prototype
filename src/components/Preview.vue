@@ -41,7 +41,7 @@
                   <div class="flex items-center">
                     <template v-if="socialLink.enabled">
                       <a :href="socialLink.link" target="_blank" class="text-blue-500">
-                        <img :src="socialLink.imageSrc" height="25" width="25" :style="{ backgroundColor: designStore.iconColor, borderRadius: designStore.selectedIconShape === 'circle' ? '50%' : '0', }" class="clickable-image my-0.5" alt="" />
+                        <img :src="socialLink.imageSrc" height="25" width="25" :style="{ backgroundColor: designStore.iconColor, borderRadius: `${designStore.selectedIconShape}%` }" class="clickable-image my-0.5" alt="" />
                       </a>
                     </template>
                   </div>
@@ -53,7 +53,7 @@
             <div v-for="(textField, index) in socialStore.textFields" :key="index">
               <div class="flex items-center">
                 <a :href="textField.text" target="_blank" class="text-blue-500">
-                  <img :src="textField.imageSrc" height="25" width="25" :style="{ backgroundColor: designStore.iconColor, borderRadius: designStore.selectedIconShape === 'circle' ? '50%' : '0',  }" class="clickable-image my-0.5 " alt="" />
+                  <img :src="textField.imageSrc" height="25" width="25" :style="{ backgroundColor: designStore.iconColor, borderRadius: `${designStore.selectedIconShape}%`  }" class="clickable-image my-0.5 " alt="" />
                 </a>
               </div>
             </div>

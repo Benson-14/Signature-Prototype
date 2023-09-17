@@ -14,6 +14,9 @@ import youtubec from '@/assets/social-icons/yc.png'
 import slack from '@/assets/social-icons/slack.png'
 import telegram from '@/assets/social-icons/telegram.png'
 import tiktok from '@/assets/social-icons/tiktok.png'
+import slackc from '@/assets/social-icons/slackc.png'
+import telegramc from '@/assets/social-icons/telegramc.png'
+import tiktokc from '@/assets/social-icons/tiktokc.png'
 
 
 export const useSocialsStore = defineStore('socials', {

@@ -103,20 +103,28 @@
         <div class="mb-6 flex">
           <label class="block pt-2 text-sm font-light w-1/3">Icon Shape</label>
           <div class="ml-2 flex items-center space-x-4">
-            <input
-              id="square"
-              name="icon-shape"
-              type="radio"
-              v-model="designStore.selectedIconShape"
-              class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-indigo-600 rounded-md"
-            />
-            <input
-              id="circle"
-              name="icon-shape"
-              type="radio"
-              v-model="designStore.selectedIconShape"
-              class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-indigo-600 rounded-full"
-            />
+            <label for="square" class="flex items-center space-x-2 cursor-pointer">
+              <input
+                id="square"
+                name="icon-shape"
+                type="radio"
+                v-model="designStore.selectedIconShape"
+                value="0"
+                class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-indigo-600 rounded-md"
+              />
+              <span>Square</span>
+            </label>
+            <label for="circle" class="flex items-center space-x-2 cursor-pointer">
+              <input
+                id="circle"
+                name="icon-shape"
+                type="radio"
+                v-model="designStore.selectedIconShape"
+                value="50"
+                class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-indigo-600 rounded-full"
+              />
+              <span>Circle</span>
+            </label>
           </div>
         </div>
 
