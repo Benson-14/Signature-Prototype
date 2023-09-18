@@ -8,7 +8,7 @@ export const useDesignStore = defineStore('design', {
     textColor: '#3574e8',
     selectedStyle: 'Branded',
     selectedIconShape: 0 ,
-    iconColor: '#ffffff',
+    iconColor: '#000000',
     iconSize: 25,
     // Add other design-related state properties here
   }),

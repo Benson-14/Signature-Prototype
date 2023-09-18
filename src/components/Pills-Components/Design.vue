@@ -103,7 +103,7 @@
         <div class="mb-6 flex">
           <label class="block pt-2 text-sm font-light w-1/3">Icon Shape</label>
           <div class="ml-2 flex items-center space-x-4">
-            <label for="square" class="flex items-center space-x-2 cursor-pointer">
+            <label for="square" class="flex items-center space-x-2 cursor-pointer text-sm font-light">
               <input
                 id="square"
                 name="icon-shape"
@@ -114,7 +114,7 @@
               />
               <span>Square</span>
             </label>
-            <label for="circle" class="flex items-center space-x-2 cursor-pointer">
+            <label for="circle" class="flex items-center space-x-2 cursor-pointer text-sm font-light">
               <input
                 id="circle"
                 name="icon-shape"
