@@ -1,19 +1,22 @@
 import { defineStore } from 'pinia';
+// branded icons
 import facebook from '@/assets/social-icons/fs.png'
 import instagram from '@/assets/social-icons/is.png'
 import linkedin from '@/assets/social-icons/ls.png'
 import whatsapp from '@/assets/social-icons/ws.png'
 import twitter from '@/assets/social-icons/ts.png'
 import youtube from '@/assets/social-icons/ys.png'
+import slack from '@/assets/social-icons/slack.png'
+import telegram from '@/assets/social-icons/telegram.png'
+import tiktok from '@/assets/social-icons/tiktok.png'
+
+// colored icons
 import facebookc from '@/assets/social-icons/fc.png'
 import instagramc from '@/assets/social-icons/ic.png'
 import linkedinc from '@/assets/social-icons/lc.png'
 import whatsappc from '@/assets/social-icons/wc.png'
 import twitterc from '@/assets/social-icons/tc.png'
 import youtubec from '@/assets/social-icons/yc.png'
-import slack from '@/assets/social-icons/slack.png'
-import telegram from '@/assets/social-icons/telegram.png'
-import tiktok from '@/assets/social-icons/tiktok.png'
 import slackc from '@/assets/social-icons/slackc.png'
 import telegramc from '@/assets/social-icons/telegramc.png'
 import tiktokc from '@/assets/social-icons/tiktokc.png'
@@ -24,16 +27,19 @@ export const useSocialsStore = defineStore('socials', {
     return {
       caption: '',
       hasEnabledIcons: false,
-      selectedStyle: 'Branded',
       socialLinks: [
-        { imageSrc: 'Branded' === 'Branded' ? facebook : facebookc, link: '', enabled: false },
-        { imageSrc: 'Branded' === 'Branded' ? instagram : instagramc, link: '', enabled: false },
-        { imageSrc: 'Branded' === 'Branded' ? linkedin : linkedinc, link: '', enabled: false },
-        { imageSrc: 'Branded' === 'Branded' ? whatsapp : whatsappc, link: '', enabled: false },
-        { imageSrc: 'Branded' === 'Branded' ? twitter : twitterc, link: '', enabled: false },
-        { imageSrc: 'Branded' === 'Branded' ? youtube : youtubec, link: '', enabled: false },
+        { imageSrc: facebook, link: '', enabled: false },
+        { imageSrc: instagram, link: '', enabled: false },
+        { imageSrc: linkedin, link: '', enabled: false },
+        { imageSrc: whatsapp, link: '', enabled: false },
+        { imageSrc: twitter, link: '', enabled: false },
+        { imageSrc: youtube, link: '', enabled: false },
       ],
+
+      // Icons & Links stored here which are selected from the gallery 
       textFields: [],
+
+
       galleryIcons: [
         { imageSrc: slack, enabled: true },
         { imageSrc: telegram, enabled: true },

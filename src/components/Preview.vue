@@ -16,7 +16,7 @@
             
               <div class="py-4" v-if="imageStore.imagePreviewUrl">
                 <a :href="imageStore.imageLink" target="_blank" >
-                  <img :src="imageStore.imagePreviewUrl" alt="Uploaded Image" class="" :style="{ width: imageStore.computedImageSize, height: imageStore.computedImageSize, 'border-radius': '55%', width: '100%', height: '100%' }">
+                  <img :src="imageStore.imagePreviewUrl" alt="Uploaded Image" class="" :style="{ 'border-radius': '55%', width: '100%', height: '100%' }">
                 </a>
               </div>
 
@@ -113,8 +113,8 @@
       
           <!-- Add to Dashboard and Cancel Buttons -->
     <div class="flex justify-end self-end my-4 pt-4 mx-3">
-      <button class="px-3 py-1 rounded-lg text-md text-blue-500 mr-2">Cancel</button>
-      <button class=" px-3 py-1 rounded-md text-md text-white bg-blue-500">Add to Dashboard</button>
+      <button class="px-3 py-1 rounded-lg text-md text-blue-500 mr-2" @click="cancel">Cancel</button>
+      <button class=" px-3 py-1 rounded-md text-md text-white bg-blue-500" @click="addToDashboard">Add to Dashboard</button>
     </div>
   </div>
     </div>
@@ -129,6 +129,7 @@ import { useImageStore } from '@/store/images';
 import { useSocialsStore } from '@/store/socials';
 import { useAddonStore } from '@/store/addon';
 import { useDesignStore } from '@/store/design';
+import { useUserStore } from '@/store/userStore';
 
 
 export default {
@@ -146,6 +147,179 @@ export default {
     galleryIconsAddedToSocialLinks() {
       // Use a computed property to filter gallery icons that have been added to the social link section
       return this.socialStore.galleryIcons.filter(icon => !icon.enabled);
+    },
+  },
+
+  methods: {
+    addToDashboard() {
+      const userStore = useUserStore();
+      const userData = {
+        // General
+        name: this.generalStore.inputName,
+        company: this.generalStore.inputCompany,
+        position: this.generalStore.inputPosition,
+        department: this.generalStore.inputDepartment,
+    
+        selectedFields: this.generalStore.inputFields.map(field => ({
+          type: field.type,
+          value: field.value,
+        })),
+
+        // Design
+        textColor: this.designStore.textColor,
+        fontFamily: this.designStore.selectedFontFamily,
+        fontSize: this.designStore.fontSize,
+        templateColor: this.designStore.templateColor,
+        iconSize: this.designStore.iconSize,
+        iconColor: this.designStore.iconColor,
+        selectedIconShape: this.designStore.selectedIconShape,
+
+        // Image
+        imagePreviewUrl: this.imageStore.imagePreviewUrl,
+        imageLink: this.imageStore.imageLink,
+        bannerPreviewUrl: this.imageStore.bannerPreviewUrl,
+        bannerLink: this.imageStore.bannerLink,
+        computedImageSize: this.imageStore.computedImageSize,
+        computedBandwidth: this.imageStore.computedBandwidth,
+        
+        socialLinks: this.socialStore.socialLinks.map(socialLink => ({
+        link: socialLink.link,
+        imageSrc: socialLink.imageSrc,
+        enabled: socialLink.enabled,
+        // Add more properties from socialLink as needed
+        })),
+        textFields: this.socialStore.textFields.map(textField => ({
+          text: textField.text,
+          imageSrc: textField.imageSrc,
+          // Add more properties from textField as needed
+        })),
+
+        // Add-ons
+        ctaButtonText: this.addonStore.ctaButtonText,
+        ctaButtonLink: this.addonStore.ctaButtonLink,
+        ctaButtonFont: this.addonStore.ctaButtonFont,
+        signoffCustomization: this.addonStore.signoffCustomization,
+        customSignoffText: this.addonStore.customSignoffText,
+        selectedRadioButtonText: this.addonStore.selectedRadioButtonText,
+        buttonText: this.addonStore.buttonText,
+        selectedPlatform: this.addonStore.selectedPlatform,
+        buttonLink: this.addonStore.buttonLink,
+        buttonFont: this.addonStore.buttonFont,
+
+        marketplaces: this.addonStore.marketplaces.map(marketplace => ({
+          link: marketplace.link,
+          imageSrc: marketplace.imageSrc,
+          imageAlt: marketplace.imageAlt,
+          isIconVisible: marketplace.isIconVisible,
+          // Add more properties from marketplace as needed
+        })),
+
+
+          // Add more properties as needed
+        };
+
+
+        // Clear all data
+        //General
+        this.generalStore.inputName = '',
+        this.generalStore.inputCompany = '',
+        this.generalStore.inputPosition = '',
+        this.generalStore.inputDepartment = '',
+        this.generalStore.inputFields = [],
+        // Design
+        this.designStore.textColor = '',
+        this.designStore.selectedFontFamily,
+        this.designStore.fontSize,
+        this.designStore.templateColor,
+        this.designStore.iconSize,
+        this.designStore.iconColor,
+        this.designStore.selectedIconShape,
+        // Images
+        this.imageStore.imagePreviewUrl = '';
+        this.imageStore.imageLink = '';
+        this.imageStore.bannerPreviewUrl = '';
+        this.imageStore.bannerLink = '';
+        //this.imageStore.computedImageSize = null; 
+        this.imageStore.computedBandwidth = null;
+        this.socialStore.socialLinks.forEach(socialLink => {
+          socialLink.link = '';
+          socialLink.enabled = false;
+        });
+        
+        this.socialStore.textFields.forEach(textField => {
+          textField.text = '';
+        
+        });
+
+        // CTA
+        this.addonStore.ctaButtonText = '';
+        this.addonStore.ctaButtonLink = '';
+        this.addonStore.ctaButtonFont = '';
+        this.addonStore.signoffCustomization = '',
+        this.addonStore.customSignoffText = '';
+        this.addonStore.selectedRadioButtonText = '';
+        this.addonStore.buttonText = '',
+        this.addonStore.selectedPlatform = '',
+        this.addonStore.buttonLink = '',
+        this.addonStore.buttonFont = '',
+        this.addonStore.marketplaces.forEach(marketplace => {
+          marketplace.link = ''; // Clear the link property
+          marketplace.isIconVisible = false;
+        });
+      
+      userStore.setUserData(userData); // Update the user data in the store
+      userStore.setDashboardAdded(true);
+      this.$router.push({ name: 'Home' }); // Navigate to the "Home" route
+    },
+    cancel() {
+      // Clear all data
+      // General
+      this.generalStore.inputName = '';
+      this.generalStore.inputCompany = '';
+      this.generalStore.inputPosition = '';
+      this.generalStore.inputDepartment = '';
+      this.generalStore.inputFields = [];
+      // Design
+      this.designStore.textColor = '';
+      this.designStore.selectedFontFamily = '';
+      this.designStore.fontSize = '';
+      this.designStore.templateColor = '';
+      this.designStore.iconSize = '';
+      this.designStore.iconColor = '';
+      this.designStore.selectedIconShape = '';
+      // Images
+      this.imageStore.imagePreviewUrl = '';
+      this.imageStore.imageLink = '';
+      this.imageStore.bannerPreviewUrl = '';
+      this.imageStore.bannerLink = '';
+      // Social Links
+      this.socialStore.socialLinks.forEach(socialLink => {
+        socialLink.link = '';
+        socialLink.enabled = false;
+      });
+      // Text Fields
+      this.socialStore.textFields.forEach(textField => {
+        textField.text = '';
+      });
+      // CTA
+      this.addonStore.ctaButtonText = '';
+      this.addonStore.ctaButtonLink = '';
+      this.addonStore.ctaButtonFont = '';
+      this.addonStore.signoffCustomization = '';
+      this.addonStore.customSignoffText = '';
+      this.addonStore.selectedRadioButtonText = '';
+      this.addonStore.buttonText = '';
+      this.addonStore.selectedPlatform = '';
+      this.addonStore.buttonLink = '';
+      this.addonStore.buttonFont = '';
+      // Marketplaces
+      this.addonStore.marketplaces.forEach(marketplace => {
+        marketplace.link = '';
+        marketplace.isIconVisible = false;
+      });
+
+      // Navigate back to the home page
+      this.$router.push({ name: 'Home' });
     },
   },
 
